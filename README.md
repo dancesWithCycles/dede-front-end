@@ -13,7 +13,7 @@ Run the following command in your favorite GNU/Linux shell to start the service 
 ```
 npm start
 ```
-## Setup for development environment
+## Setup for production deployment
 Run the following command in your favorite GNU/Linux shell to install dependenies.
 ```
 npm i
