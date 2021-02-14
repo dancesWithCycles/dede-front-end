@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg6629" viewBox="0 0 128 88.713" version="1.1">
+  <title id="title7198">Car Pictogram</title>
+  <g id="layer1" transform="translate(-266.37 -370.15)">
+    <g id="g7190">
+      <path id="path4336-0" d="m299.76 370.15c-8.4624 0.82767-10.651 23.769-16.37 35.246h-3.7077c-7.3897-0.82767-13.314 5.2024-13.314 12.618v10.825c0 4.7021 2.3562 8.7588 5.9829 11.163-0.40164 0.4782-0.41766 0.93991-0.41766 1.4376v5.7506c0.33338 5.6327 4.8326 10.148 10.445 10.148h3.3706c5.7165 0 10.3-4.5153 10.3-10.148v-4.6926h68.637v4.6926c0.10368 5.6327 4.6872 10.148 10.3 10.148h3.3706c5.9462 0 10.445-4.5153 10.445-10.148v-5.7506c-0.33347-0.49771-0.3499-0.95942-0.41765-1.4376 3.6267-2.404 5.9829-6.4607 5.9829-11.163v-10.825c0-6.5884-5.9243-12.618-13.314-12.618h-3.7077c-5.7184-12.305-7.9072-35.246-17.19-35.246h-59.575z"/>
+      <path id="path4362-6" d="m292.34 425.81c0 4.0981-3.3222 7.4203-7.4203 7.4203s-7.4203-3.3222-7.4203-7.4203 3.3222-7.4203 7.4203-7.4203 7.4203 3.3222 7.4203 7.4203z" fill="#fff"/>
+      <path id="path4362-1-75" d="m383.24 425.81c0 4.0981-3.3222 7.4203-7.4203 7.4203s-7.4203-3.3222-7.4203-7.4203 3.3222-7.4203 7.4203-7.4203 7.4203 3.3222 7.4203 7.4203z" fill="#fff"/>
+      <path id="path4336-4-0" stroke-linejoin="round" d="m309.03 381.28c-5.9506-0.1274-7.7209 12.661-11.13 20.406h63.073c-3.4086-7.6175-5.1365-20.406-11.094-20.406h-40.849z" stroke="#fffffc" stroke-linecap="round" stroke-miterlimit="3.9" stroke-width="3.5246" fill="#fff"/>
+      <path id="rect5182-0" stroke-linejoin="round" d="m316.45 423.95h25.971v9.2754h-25.971z" stroke="#fffffc" stroke-linecap="round" stroke-miterlimit="3.9" stroke-width="3.5246" fill="#fff"/>
+      <path id="path5251-4" stroke="#000" stroke-width="3.5246" stroke-miterlimit="3.9" d="m270.08 457.1h122.43"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Car Pictogram</dc:title>
+        <dc:date>2012-12-09T14:40:02</dc:date>
+        <dc:description>A simple car pictogram.</dc:description>
+        <dc:source>http://openclipart.org/detail/173653/car-pictogram-by-libberry-173653</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>libberry</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>car</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>pictogram</rdf:li>
+            <rdf:li>symbol</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

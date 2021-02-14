@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg7200"
+    sodipodi:docname="新規ドキュメント 8"
+    viewBox="0 0 108.98 128"
+    version="1.1"
+    inkscape:version="0.48.2 r9819"
+  >
+  <title
+      id="title7784"
+    >Train Pictogram</title
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-y="75"
+      fit-margin-left="0"
+      pagecolor="#ffffff"
+      fit-margin-top="0"
+      inkscape:window-maximized="0"
+      inkscape:zoom="1.0681152"
+      inkscape:window-x="445"
+      inkscape:window-height="835"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="layer1"
+      inkscape:cx="124.16542"
+      inkscape:cy="84.155188"
+      fit-margin-right="0"
+      fit-margin-bottom="0"
+      inkscape:window-width="1028"
+      inkscape:pageopacity="0.0"
+      inkscape:document-units="px"
+  />
+  <g
+      id="layer1"
+      inkscape:label="レイヤー 1"
+      inkscape:groupmode="layer"
+      transform="translate(-241.12 -432.97)"
+    >
+    <g
+        id="g7774"
+        transform="matrix(1.4014 0 0 1.4014 -96.781 -225.17)"
+      >
+      <path
+          id="rect7100-7"
+          style="fill:#000000"
+          inkscape:connector-curvature="0"
+          d="m248.26 469.63c-3.946 0-7.1388 3.1479-7.1388 7.0939v54.91c0 3.946 3.1928 7.0939 7.1388 7.0939h2.5592l6.6449 7.1388h45.078l6.6449-7.1388h2.5592c3.946 0 7.1388-3.1479 7.1388-7.0939v-54.91c0-3.946-3.1928-7.0939-7.1388-7.0939h-63.486z"
+      />
+      <path
+          id="path4362-12-0"
+          style="fill:#ffffff"
+          inkscape:connector-curvature="0"
+          d="m265.71 526.49c0 3.0537-2.4755 5.5292-5.5293 5.5292-3.0537 0-5.5293-2.4755-5.5293-5.5292s2.4755-5.5293 5.5293-5.5293c3.0537 0 5.5293 2.4755 5.5293 5.5293z"
+      />
+      <path
+          id="path4362-1-7-5"
+          style="fill:#ffffff"
+          inkscape:connector-curvature="0"
+          d="m305.37 526.49c0 3.0537-2.4756 5.5292-5.5293 5.5292-3.0538 0-5.5293-2.4755-5.5293-5.5292s2.4755-5.5293 5.5293-5.5293c3.0537 0 5.5293 2.4755 5.5293 5.5293z"
+      />
+      <rect
+          id="rect7177-6"
+          style="stroke-linejoin:round;stroke:#ffffff;stroke-linecap:round;stroke-width:3.9184;fill:#ffffff"
+          rx="2.7303"
+          ry="2.7303"
+          height="23.472"
+          width="52.487"
+          y="490.43"
+          x="253.77"
+      />
+      <g
+          id="g7447-7"
+          style="stroke:#000000"
+          transform="matrix(1.3061 0 0 1.3061 980.29 837.94)"
+        >
+        <path
+            id="path7239-3"
+            style="stroke:#000000;stroke-width:3;fill:none"
+            inkscape:connector-curvature="0"
+            d="m-544.91-228.32c-8.4122 14.57-8.5205 14.758-8.5205 14.758"
+        />
+        <path
+            id="path7239-2-8"
+            style="stroke:#000000;stroke-width:3;fill:none"
+            inkscape:connector-curvature="0"
+            d="m-518.9-213.56c-8.4122-14.57-8.5205-14.758-8.5205-14.758"
+        />
+      </g
+      >
+      <rect
+          id="rect7177-8-4"
+          style="stroke-linejoin:round;stroke:#ffffff;stroke-linecap:round;stroke-width:3.9184;fill:#ffffff"
+          rx=".43259"
+          ry=".43259"
+          height="3.9989"
+          width="17.068"
+          y="477.19"
+          x="271.47"
+      />
+    </g
+    >
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Train Pictogram</dc:title
+        >
+        <dc:date
+          >2012-12-09T14:40:45</dc:date
+        >
+        <dc:description
+          >A simple train pictogram.</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/173654/train-pictogram-by-libberry-173654</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >libberry</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >pictogram</rdf:li
+            >
+            <rdf:li
+              >symbol</rdf:li
+            >
+            <rdf:li
+              >train</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

@@ -1,0 +1,51 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const config = {
+   entry: path.resolve(__dirname, 'src/index'),
+   output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js', // place where bundled app will be served
+      },
+   module: {
+      rules: [
+         {
+            test: /\.jsx?$/, // search for js files 
+            exclude: /node_modules/,
+            include: path.resolve(__dirname, 'src'),
+            use: ['babel-loader']
+         },
+         {
+            test: /\.css$/,
+            use: [
+               // add style to DOM so that style is active and visible
+               "style-loader",
+               // read CSS and load ressources like import or URL
+               "css-loader"]
+          },
+         {
+            test: /\.(png|jp(e*)g|svg)$/,  
+            use: [{
+                loader: 'url-loader',
+                options: { 
+                    limit: 8000, // Convert images < 8kb to base64 strings
+                    name: 'images/[hash]-[name].[ext]'
+                } 
+            }]
+         }
+      ]
+   },
+   devServer: {
+      inline: true, // autorefresh
+      contentBase:  path.resolve(__dirname, 'dist'),
+      port:2222
+   },
+   plugins: [
+      // create an plugin instance so that you can use it several times anywhere
+      new HtmlWebpackPlugin({
+         // automagically inject all generated bundles into a generated HTML file
+         template: "src/index.html"
+      })
+   ]
+};
+module.exports = config;
