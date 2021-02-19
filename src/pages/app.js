@@ -27,7 +27,7 @@ const App=()=>
             <FormattedMessage id="Aapp.text"/>
         </p>
         <p>
-            <a href="http://dedriver.org/share">
+            <a href="http://dedriver.org/share/Dede_Android_App.apk" download>
                 <FormattedMessage id="Aapp.link"/>
             </a>
         </p>

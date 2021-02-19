@@ -6,7 +6,6 @@
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "serve": "webpack serve --mode=development --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stefan Begerad",
