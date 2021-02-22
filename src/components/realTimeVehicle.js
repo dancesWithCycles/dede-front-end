@@ -16,8 +16,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const GetAlias=(alias)=>{
-    return alias?alias:
-	'Dede';
+import React from 'react';
+import VehicleIcon from './vehicleIcon';
+import VehiclePopup from './vehiclePopup';
+import {Marker} from 'react-leaflet';
+
+const RealTimeVehicle=(props)=>{
+	const {location}=props;
+	//TODO improve availability of age property
+	const age=60000;
+	let sysTs=Date.now();
+	let diff=sysTs-location.ts;
+	if(diff<age){
+		return(
+			<>
+				<Marker
+					key={location.uuid}
+					position={[location.lat,location.lon]}
+					icon={VehicleIcon(location)}
+				>
+					<VehiclePopup location={location}/>
+				</Marker>
+			</>
+		);
+	}else{
+		return null;
+	}
 }
-export default GetAlias;
+export default RealTimeVehicle;

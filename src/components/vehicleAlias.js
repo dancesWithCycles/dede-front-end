@@ -16,14 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import GetVehicleIcon from './getVehicleIcon';
-import L from 'leaflet';
-
-const GetLocationIcon=(location)=>{
-    return new L.Icon({
-	iconUrl:GetVehicleIcon(location.vehicle),
-	iconSize:[32,32],
-	popupAnchor:[0,-8]
-    });
+function VehicleAlias(alias) {
+    return alias ? alias :
+        'Dede';
 }
-export default GetLocationIcon;
+export default VehicleAlias;

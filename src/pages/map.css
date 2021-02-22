@@ -16,11 +16,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+/* set height and width of the leaflet container so it fits the viewport */
 .leaflet-container {
+    /* vw: viewport-width */
     width: 100vw;
-    /*100vw width only fits on full screen firefox desktop.
-      vw: viewport-width
-      vh: viewport-height*/
+    /* vh: viewport-height */
     height: 100vh;
-    /*100vh is also too big in full screen firefox desktop.*/
 }

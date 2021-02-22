@@ -16,25 +16,17 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from 'react';
-import Location from './location';
+import { useIntl } from 'react-intl';
 
-const RealTimeLocation=(props)=>{
-	const loc=props.location;
-	//TODO improve availability of age property
-	const age=60000;
-	let sysTs=Date.now();
-	// console.log('sysTs:'+sysTs);
-	let locTs=loc.ts;
-	// console.log('locTs:'+locTs);
-	let diff=sysTs-loc.ts;
-	// console.log('diff:'+diff);
-	if(diff<age){
-		// console.log('rt uuid:'+loc.uuid);
-		return <Location uuid={loc.uuid} location={loc}/>;
-	}else{
-		// console.log('no rt');
-		return null;
-	}
+const VehicleName=(vehicle)=>{
+	const intl=useIntl();	
+    return vehicle==='0'?intl.formatMessage({ id: 'Vehicle.bus' }):
+	vehicle==='1'?intl.formatMessage({ id: 'Vehicle.car' }):
+	vehicle==='2'?intl.formatMessage({ id: 'Vehicle.train' }):
+	vehicle==='3'?intl.formatMessage({ id: 'Vehicle.tram' }):
+	vehicle==='4'?intl.formatMessage({ id: 'Vehicle.taxi' }):
+	vehicle==='5'?intl.formatMessage({ id: 'Vehicle.parcelservice' }):
+	vehicle==='6'?intl.formatMessage({ id: 'Vehicle.deliveryservice' }):
+	intl.formatMessage({ id: 'Vehicle.nomatch' });
 }
-export default RealTimeLocation;
+export default VehicleName;

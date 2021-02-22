@@ -24,7 +24,9 @@ import  {MapContainer,TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 //send HTTP GET
 import axios from 'axios';
-import RealTimeLocation from '../components/realTimeLocation';
+import RealTimeVehicle from '../components/realTimeVehicle';
+import CurrentPosition from '../components/currentPosition';
+import InitialMapCenter from '../assets/initialMapCenter';
 
 const Map=()=>
 {
@@ -48,10 +50,20 @@ const Map=()=>
         return ()=>clearInterval(timer);
     });
 
+    const curPos=()=>{
+        const pos=CurrentPosition();
+        if(pos){
+            console.log('curPos: lat: '+pos.coords.latitude +',lon: '+pos.coords.longitude);
+            return [pos.coords.latitude,pos.coords.longitude];
+        }else{
+             return InitialMapCenter.initialMapCenter;
+        }
+    };
+
     return(
         <MapContainer
         // map is invisible without center attribute
-        center={{lat: 39.208322,lng: -76.829127}}
+        center={curPos()}
         // map is invisible without zoom attribute
         zoom={18}
         attributionControl={true}
@@ -68,7 +80,7 @@ const Map=()=>
             />
         
             {locations.map(function(o) {
-                return <RealTimeLocation key={o.uuid} location={o}/>;
+                return <RealTimeVehicle key={o.uuid} location={o}/>;
                 })
             }
 
