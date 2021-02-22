@@ -26,7 +26,7 @@ const VehiclePopup = (props) => {
   const { location } = props;
   return  (
     <Popup>
-      <div className='poup-text'>
+      <div className='vehicle-poup-text'>
       <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
       <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
       <FormattedMessage id="Location.latitude"/>: {location.lat}<br/>

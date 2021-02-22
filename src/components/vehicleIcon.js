@@ -29,7 +29,7 @@ import L from 'leaflet';
       // size of the icon in width and hight
       iconSize:[32,32],
       // determine how the popup is positions relative to the actual point on the map
-      popupAnchor:[0,-8],
+      popupAnchor:[0,-10],
       // determine how the image is positions relative to the actual point on the map
       iconAnchor: null,
       // path to shadow graphic

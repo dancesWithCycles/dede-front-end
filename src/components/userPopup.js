@@ -17,30 +17,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from 'react';
-import VehicleIcon from './vehicleIcon';
-import VehiclePopup from './vehiclePopup';
-import {Marker} from 'react-leaflet';
+import {Popup} from 'react-leaflet';
+import { FormattedMessage } from 'react-intl';
 
-const RealTimeVehicle=(props)=>{
-	const {location}=props;
-	//TODO improve availability of age property
-	const age=60000;
-	let sysTs=Date.now();
-	let diff=sysTs-location.ts;
-	if(diff<age){
-		return(
-			<>
-				<Marker
-					key={location.uuid}
-					position={[location.lat,location.lon]}
-					icon={VehicleIcon(location)}
-				>
-					<VehiclePopup location={location}/>
-				</Marker>
-			</>
-		);
-	}else{
-		return null;
-	}
-}
-export default RealTimeVehicle;
+const UserPopup = (props) => {
+  const { position } = props;
+  return  (
+    <Popup>
+      <div className='user-poup-text'>
+      <FormattedMessage id="Location.alias"/>: <FormattedMessage id="Location.alias.user"/><br/>
+      <FormattedMessage id="Location.latitude"/>: {position[0]}<br/>
+      <FormattedMessage id="Location.longitude"/>: {position[1]}<br/>
+      <FormattedMessage id="Location.time.system"/>: {Date.now()}<br/>
+      </div>
+    </Popup>
+    );
+};
+
+export default UserPopup;
+

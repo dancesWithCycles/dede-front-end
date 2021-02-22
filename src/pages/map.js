@@ -24,8 +24,9 @@ import  {MapContainer,TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 //send HTTP GET
 import axios from 'axios';
-import RealTimeVehicle from '../components/realTimeVehicle';
-import CurrentPosition from '../components/currentPosition';
+import VehicleMarker from '../components/vehicleMarker';
+import UserMarker from '../components/userMarker';
+import UserPosition from '../components/userPosition';
 import InitialMapCenter from '../assets/initialMapCenter';
 
 const Map=()=>
@@ -50,8 +51,9 @@ const Map=()=>
         return ()=>clearInterval(timer);
     });
 
-    const curPos=()=>{
-        const pos=CurrentPosition();
+    const pos=UserPosition();
+
+    const currentMapCenter=()=>{
         if(pos){
             console.log('curPos: lat: '+pos.coords.latitude +',lon: '+pos.coords.longitude);
             return [pos.coords.latitude,pos.coords.longitude];
@@ -63,9 +65,9 @@ const Map=()=>
     return(
         <MapContainer
         // map is invisible without center attribute
-        center={curPos()}
+        center={currentMapCenter()}
         // map is invisible without zoom attribute
-        zoom={18}
+        zoom={14}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
@@ -80,9 +82,11 @@ const Map=()=>
             />
         
             {locations.map(function(o) {
-                return <RealTimeVehicle key={o.uuid} location={o}/>;
+                return <VehicleMarker key={o.uuid} location={o}/>;
                 })
             }
+
+            <UserMarker position={currentMapCenter()}/>
 
         </MapContainer>
         ); 

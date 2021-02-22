@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 
-const CurrentPosition=()=>
+const UserPosition=()=>
 {
     const [pos, setPos]=useState(null);
 
@@ -10,7 +10,7 @@ const CurrentPosition=()=>
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(success,error,options);
             }
-        },1000);
+        },10000);
         // clearing interval: similar to ComponentWillUnmount
         return ()=>clearInterval(timer);
     });
@@ -26,10 +26,11 @@ const CurrentPosition=()=>
     }
     
     const success=(position)=>{
+        // TODO remove debugging logs
         setPos(position);
     }
     
     return pos;
 }
 
-export default CurrentPosition;
+export default UserPosition;

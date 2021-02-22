@@ -41,6 +41,7 @@
   "Concept.component.map":"eine Karte zur Ansicht von Echtzeitbewegung von Mobilitätsdienstleistern.",
   "Concept.description":"Der Dede Server vermittelt zwischen App und Karte, damit nicht jedes Verkehrsmittel direkt mit jeder App interagieren muss. Auf diese Weise kann die Karte mit einem Streich sämtliche Verkehrsmittel am Server abfragen. Der Dede Server speichert ausschließlich die aktuellste Position eines Verkehrsmittels. Falls ein Mobilitätsdienstleister das Senden der Position beendet, löscht der Dede Server das entsprechende Verkehrsmittel nach einer Minute. Falls kein einziger Mobilitätsdienstleister die Dede App aktiv benutzt, ist die Dede Karte spätestens nach einer Minute komplett leer.",
   "Location.alias":"Alias",
+  "Location.alias.user":"Benutzerposition",
   "Location.vehicle":"Verkehrsmittel",
   "Location.latitude":"Breitengrad",
   "Location.longitude":"Längengrad",

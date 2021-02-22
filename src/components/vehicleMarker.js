@@ -16,24 +16,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import dedeIcon from '../images/dedeLogo0032.png';
-import carIcon from '../images/car.svg';
-import busIcon from '../images/bus.svg';
-import trainIcon from '../images/train.svg';
-import tramIcon from '../images/tram.svg';
-import taxiIcon from '../images/taxi.svg';
-import ParcelServiceIcon from '../images/parcelservice.svg';
-import DeliveryServiceIcon from '../images/deliveryservice.svg';
+import React from 'react';
+import VehicleIcon from './vehicleIcon';
+import VehiclePopup from './vehiclePopup';
+import {Marker} from 'react-leaflet';
 
-const VehicleCode=(vehicle)=>{
-    return vehicle==='0'?busIcon:
-	vehicle==='1'?carIcon:
-	vehicle==='2'?trainIcon:
-	vehicle==='3'?tramIcon:
-	vehicle==='4'?taxiIcon:
-	vehicle==='5'?ParcelServiceIcon:
-	vehicle==='6'?DeliveryServiceIcon:
-	dedeIcon;
-};
-
-export default VehicleCode;
+const VehicleRealTimeMarker=(props)=>{
+	const {location}=props;
+	//TODO improve availability of age property
+	const age=60000;
+	let sysTs=Date.now();
+	let diff=sysTs-location.ts;
+	if(diff<age){
+		return(
+			<>
+				<Marker
+					key={location.uuid}
+					position={[location.lat,location.lon]}
+					icon={VehicleIcon(location)}
+				>
+					<VehiclePopup location={location}/>
+				</Marker>
+			</>
+		);
+	}else{
+		return null;
+	}
+}
+export default VehicleRealTimeMarker;
