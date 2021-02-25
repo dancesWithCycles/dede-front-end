@@ -69,7 +69,7 @@ const Map=()=>
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={2}
+        zoom={1}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
