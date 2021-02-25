@@ -20,32 +20,23 @@ import React from 'react';
 import UserIcon from './userIcon';
 import {Marker} from 'react-leaflet';
 import UserPopup from './userPopup';
+import {INITIAL_LOCATION} from '../pages/map';
 
 const UserMarker=(props)=>{
     const {position}=props;
-    return(
-        <Marker
-        key="user-icon"
-        position={position}
-        icon={UserIcon()}
-    >
-        <UserPopup position={position}/>
-</Marker>
-);
-    // if(position){
-    //     console.log('UserMarker: lat: '+position.coords.latitude +',lon: '+position.coords.longitude);
-    //     return(
-    //         <>
-    //             <Marker
-    //                 key='user-icon'
-    //                 position={[position.coords.latitude,position.coords.longitude]}
-    //                 icon={UserIcon()}
-    //             >
-    //             </Marker>
-    //         </>
-    //     );
-    // }else{
-    //     return null;
-    // }
+    //console.log('UserMarker: position: lat: '+position[0] +',lon: '+position[1]);
+    if(!position===INITIAL_LOCATION){
+	return(
+		<Marker
+            key="user-icon"
+            position={position}
+            icon={UserIcon()}>
+		<UserPopup position={position}/>
+	    </Marker>
+	);
+    }else{
+	return null;
+    }
 }
 export default UserMarker;
+

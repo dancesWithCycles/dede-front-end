@@ -1,5 +1,4 @@
 /*
-Front end for Dede passenger information system at dedriver.org
 Copyright (C) 2021  Stefan Begerad
 
 This program is free software: you can redistribute it and/or modify
@@ -25,7 +24,7 @@ import Home from "./pages/home";
 import NoMatch from "./pages/noMatch";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { IntlProvider } from "react-intl";
- 
+import './main.css';
 import LocaleDe from "./locales/de.json";
 import LocaleEn from "./locales/en.json";
 
@@ -54,3 +53,4 @@ const Main=()=>
     ); 
 }
 export default Main;
+

@@ -1,5 +1,4 @@
 /*
-Front end for Dede passenger information system at dedriver.org
 Copyright (C) 2021  Stefan Begerad
 
 This program is free software: you can redistribute it and/or modify
@@ -19,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import React, {useEffect, useState} from 'react';
 // map is invisible without the following CSS
 import './map.css';
-import  {MapContainer,TileLayer} from 'react-leaflet';
+import  {MapContainer, TileLayer, LayersControl} from 'react-leaflet';
 // map is BROKEN without zoom attribute
 import 'leaflet/dist/leaflet.css';
 //send HTTP GET
@@ -27,7 +26,10 @@ import axios from 'axios';
 import VehicleMarker from '../components/vehicleMarker';
 import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
-import InitialMapCenter from '../assets/initialMapCenter';
+import {ThunderForests} from '../components/thunderForests';
+import TBaseLayer from '../components/tBaseLayer';
+
+export const INITIAL_LOCATION = [0,0];
 
 const Map=()=>
 {
@@ -53,21 +55,21 @@ const Map=()=>
 
     const pos=UserPosition();
 
-    const currentMapCenter=()=>{
+    const currentUserLocation=()=>{
         if(pos){
-            console.log('curPos: lat: '+pos.coords.latitude +',lon: '+pos.coords.longitude);
             return [pos.coords.latitude,pos.coords.longitude];
         }else{
-             return InitialMapCenter.initialMapCenter;
+	    // return initial map location
+            return INITIAL_LOCATION;
         }
     };
 
     return(
         <MapContainer
         // map is invisible without center attribute
-        center={currentMapCenter()}
+        center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={14}
+        zoom={2}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
@@ -76,19 +78,31 @@ const Map=()=>
         animate={true}
         easeLinearity={0.35}>
                 
+	    <LayersControl>
+
+	    <LayersControl.BaseLayer name="OSM Standard" checked>
             <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-            />
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        attribution="&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors"
+	    />
+	    </LayersControl.BaseLayer>
+
+        {ThunderForests.map(function(o) {
+	    const {name, url, attribution, ...tileParams}=o;
+	    return <TBaseLayer key={o.key} name={name} url={url} attribution={attribution} tileParams={tileParams}/>;
+        })}
+
+	</LayersControl>
         
             {locations.map(function(o) {
                 return <VehicleMarker key={o.uuid} location={o}/>;
                 })
             }
 
-            <UserMarker position={currentMapCenter()}/>
+            <UserMarker position={currentUserLocation()}/>
 
         </MapContainer>
         ); 
 }
 export default Map;
+

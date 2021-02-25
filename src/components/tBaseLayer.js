@@ -16,31 +16,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from 'react';
-import VehicleIcon from './vehicleIcon';
-import VehiclePopup from './vehiclePopup';
-import {Marker} from 'react-leaflet';
+import {LayersControl, TileLayer} from 'react-leaflet';
 
-const VehicleRealTimeMarker=(props)=>{
-	const {location}=props;
-	//TODO improve availability of age property
-	const age=60000;
-	let sysTs=Date.now();
-	let diff=sysTs-location.ts;
-	if(diff<age){
-		return(
-			<>
-				<Marker
-					key={location.uuid}
-					position={[location.lat,location.lon]}
-					icon={VehicleIcon(location)}
-				>
-					<VehiclePopup location={location}/>
-				</Marker>
-			</>
-		);
-	}else{
-		return null;
-	}
-}
-export default VehicleRealTimeMarker;
+const TBaseLayer = (props) => {
+    const {name, url, attribution, ...tileParams} = props;
+    return(
+	    <LayersControl.BaseLayer name={name}>
+	    <TileLayer
+	url={url} attribution={attribution} {...tileParams} />
+	</LayersControl.BaseLayer>
+    );
+};
+
+export default TBaseLayer;
 
