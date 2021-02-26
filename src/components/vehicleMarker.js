@@ -21,9 +21,9 @@ import VehiclePopup from './vehiclePopup';
 import {Marker} from 'react-leaflet';
 
 const VehicleRealTimeMarker=(props)=>{
-    const {location}=props;
+    const {location,eventHandlers}=props;
     //TODO improve availability of age property
-    const age=600000;
+    const age=60000;
     let sysTs=Date.now();
     let diff=sysTs-location.ts;
     if(diff<age){
@@ -32,10 +32,8 @@ const VehicleRealTimeMarker=(props)=>{
 		<Marker
 	    key={location.uuid}
 	    position={[location.lat,location.lon]}
-	    icon={VehicleIcon(location)}
-		>
-		<VehiclePopup location={location}/>
-	    </Marker>
+	    eventHandlers={eventHandlers}
+	    icon={VehicleIcon(location)}/>
 	    </>
 	);
     }else{

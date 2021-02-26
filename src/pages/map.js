@@ -35,6 +35,8 @@ const Map=()=>
 {
     const [locations, setLocations]=useState([]);
 
+    const [selection, setSelection]=useState(null);
+
     useEffect(()=>{
         // setting interval: similar to ComponentDidMount
         const timer=setInterval(()=>{
@@ -64,7 +66,13 @@ const Map=()=>
         }
     };
 
+    const handleSelection=(location)=>{
+	console.log('handleSelection: lat: '+location.lat+', lon: '+location.lon);
+	setSelection(location);
+    };
+
     return(
+
         <MapContainer
         // map is invisible without center attribute
         center={currentUserLocation()}
@@ -95,13 +103,14 @@ const Map=()=>
 	</LayersControl>
         
             {locations.map(function(o) {
-                return <VehicleMarker key={o.uuid} location={o}/>;
+                return <VehicleMarker key={o.uuid} location={o} eventHandlers={{click: ()=>handleSelection(o)}}/>;
                 })
             }
 
             <UserMarker position={currentUserLocation()}/>
 
         </MapContainer>
+
         ); 
 }
 export default Map;
