@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 // map is invisible without the following CSS
 import './map.css';
 import  {MapContainer, TileLayer, LayersControl} from 'react-leaflet';
@@ -28,6 +28,7 @@ import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
+import { latLngBounds } from "leaflet";
 
 export const INITIAL_LOCATION = [0,0];
 
@@ -66,8 +67,28 @@ const Map=()=>
         }
     };
 
+    const southWest = L.latLng(40.712, -74.227)
+    const northEast = L.latLng(40.774, -74.125)
+    const bounds = latLngBounds(southWest, northEast)
+
+
+    const allLocationBounds = useMemo(() => {
+
+	//TODO latLngBounds() as init fails maybe due to empty array
+	//TODO Error: Bounds are not valid
+	//const bounds=latLngBounds()
+	const bounds = latLngBounds(southWest, northEast)
+	//sites.forEach((site) => bounds.extend(site.position));
+	locations.forEach((location)=>{
+	    const position=[location.lat, location.lon]
+	    //console.log('position: '+position)
+	    bounds.extend(position)
+	})
+	return bounds.pad(0.1)
+    }, [locations]);
+
     const handleSelection=(location)=>{
-	console.log('handleSelection: lat: '+location.lat+', lon: '+location.lon);
+	console.log('handleSelection: location: '+location.lat+', '+location.lon)
 	setSelection(location);
     };
 
@@ -75,7 +96,9 @@ const Map=()=>
 
         <MapContainer
         // map is invisible without center attribute
-        center={currentUserLocation()}
+        //TODO center={currentUserLocation()}
+	center={selection && [selection.lat, selection.lon]}
+	bounds={!selection && allLocationBounds}
         // map is invisible without zoom attribute
         zoom={1}
         attributionControl={true}
