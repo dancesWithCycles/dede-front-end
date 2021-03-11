@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import { useIntl } from 'react-intl';
 
 const VehicleName=(vehicle)=>{
-	const intl=useIntl();	
+    const intl=useIntl();
     return vehicle==='0'?intl.formatMessage({ id: 'Vehicle.bus' }):
 	vehicle==='1'?intl.formatMessage({ id: 'Vehicle.car' }):
 	vehicle==='2'?intl.formatMessage({ id: 'Vehicle.train' }):
@@ -27,6 +27,7 @@ const VehicleName=(vehicle)=>{
 	vehicle==='4'?intl.formatMessage({ id: 'Vehicle.taxi' }):
 	vehicle==='5'?intl.formatMessage({ id: 'Vehicle.parcelservice' }):
 	vehicle==='6'?intl.formatMessage({ id: 'Vehicle.deliveryservice' }):
+	vehicle?intl.formatMessage({ id: 'Vehicle.nomatch' }):
 	intl.formatMessage({ id: 'Vehicle.nomatch' });
 }
 export default VehicleName;

@@ -1,5 +1,4 @@
 /*
-Front end for Dede passenger information system at dedriver.org
 Copyright (C) 2021  Stefan Begerad
 
 This program is free software: you can redistribute it and/or modify
@@ -17,23 +16,31 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import React from 'react';
-import {Popup} from 'react-leaflet';
-import VehicleName from './vehicleName';
-import VehicleAlias from './vehicleAlias';
-import { FormattedMessage } from 'react-intl';
+import VehicleIcon from './vehicleIcon';
+import VehiclePopup from './vehiclePopup';
+import {Marker} from 'react-leaflet';
 
-const VehiclePopup = (props) => {
-  const { location } = props;
-  return  (
-    <Popup>
-      <div className='vehicle-poup-text'>
-      <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
-      <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
-      <FormattedMessage id="Location.age"/>: {Date.now()-location.ts} ms<br/>
-      </div>
-    </Popup>
-    );
-};
-
-export default VehiclePopup;
+const VehicleRealTimeMarker=(props)=>{
+    const {location}=props;
+    //TODO improve availability of age property
+    const age=120000;
+    let sysTs=Date.now();
+    let diff=sysTs-location.ts;
+    if(diff<age){
+	return(
+		<>
+		<Marker
+	    key={location.uuid}
+	    position={[location.lat,location.lon]}
+	    icon={VehicleIcon(location)}
+		>
+		<VehiclePopup location={location}/>
+	    </Marker>
+	    </>
+	);
+    }else{
+	return null;
+    }
+}
+export default VehicleRealTimeMarker;
 

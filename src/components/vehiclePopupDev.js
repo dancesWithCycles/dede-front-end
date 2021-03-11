@@ -29,6 +29,10 @@ const VehiclePopup = (props) => {
       <div className='vehicle-poup-text'>
       <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
       <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
+      <FormattedMessage id="Location.latitude"/>: {location.lat}<br/>
+      <FormattedMessage id="Location.longitude"/>: {location.lon}<br/>
+      <FormattedMessage id="Location.time.gps"/>: {location.ts}<br/>
+      <FormattedMessage id="Location.time.system"/>: {Date.now()}<br/>
       <FormattedMessage id="Location.age"/>: {Date.now()-location.ts} ms<br/>
       </div>
     </Popup>

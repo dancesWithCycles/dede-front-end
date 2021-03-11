@@ -33,6 +33,7 @@ const VehicleCode=(vehicle)=>{
 	vehicle==='4'?taxiIcon:
 	vehicle==='5'?ParcelServiceIcon:
 	vehicle==='6'?DeliveryServiceIcon:
+	vehicle?dedeIcon:
 	dedeIcon;
 };
 
