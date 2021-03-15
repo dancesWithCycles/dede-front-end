@@ -29,14 +29,11 @@ const VehicleRealTimeMarker=(props)=>{
 	if(diff<age){
 		return(
 			<>
-				<Marker
-					key={location.uuid}
+			<Marker
+		    key={location.uuid}
 		    position={[location.lat,location.lon]}
 		    eventHandlers={eventHandlers}
-					icon={VehicleIcon(location)}
-				>
-					<VehiclePopup location={location}/>
-				</Marker>
+		    icon={VehicleIcon(location)}/>
 			</>
 		);
 	}else{
