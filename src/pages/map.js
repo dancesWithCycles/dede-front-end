@@ -24,6 +24,7 @@ import 'leaflet/dist/leaflet.css';
 //send HTTP GET
 import axios from 'axios';
 import VehicleMarker from '../components/vehicleMarker';
+import VehiclePopup from '../components/vehiclePopup';
 import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
@@ -34,9 +35,9 @@ export const INITIAL_LOCATION = [0,0];
 const Map=()=>
 {
     const [locations, setLocations]=useState([]);
+    const [activeVehicle, setActiveVehicle]=useState(null);
 
-    const [selection, setSelection]=useState(null);
-
+    //load vehicles from db
     useEffect(()=>{
         // setting interval: similar to ComponentDidMount
         const timer=setInterval(()=>{
@@ -50,7 +51,7 @@ const Map=()=>
             .catch(function (error) {
                 console.log(error);
             })
-        },500);
+        },5000);
         // clearing interval: similar to ComponentWillUnmount
         return ()=>clearInterval(timer);
     });
@@ -59,16 +60,19 @@ const Map=()=>
 
     const currentUserLocation=()=>{
         if(pos){
-            return [pos.coords.latitude,pos.coords.longitude];
-        }else{
-	    // return initial map location
+	    return [pos.coords.latitude,pos.coords.longitude];
+	}else{
+	    // return initial map location until user location is available
             return INITIAL_LOCATION;
         }
     };
 
-    const handleSelection=(location)=>{
-	console.log('handleSelection: lat: '+location.lat+', lon: '+location.lon);
-	setSelection(location);
+    const closePopup=()=>{
+	setActiveVehicle(null)
+    };
+
+    const handleActiveVehicle=(location)=>{
+	setActiveVehicle(location);
     };
 
     return(
@@ -103,11 +107,20 @@ const Map=()=>
 	</LayersControl>
         
             {locations.map(function(o) {
-                return <VehicleMarker key={o.uuid} location={o} eventHandlers={{click: ()=>handleSelection(o)}}/>;
+                return <VehicleMarker
+		key={o.uuid}
+		location={o}
+		eventHandlers={{click: ()=>handleActiveVehicle(o)}}/>;
                 })
             }
 
             <UserMarker position={currentUserLocation()}/>
+
+	{activeVehicle && (
+		<VehiclePopup
+	    location={activeVehicle}
+	    onClose={()=>closePopup()}/>
+	)}
 
         </MapContainer>
 

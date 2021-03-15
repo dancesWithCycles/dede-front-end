@@ -23,10 +23,17 @@ import VehicleAlias from './vehicleAlias';
 import { FormattedMessage } from 'react-intl';
 
 const VehiclePopup = (props) => {
-  const { location } = props;
+    const { location,onClose } = props;
   return  (
-    <Popup>
-      <div className='vehicle-poup-text'>
+    <Popup
+      key={location.uuid}
+      position={[
+	  location.lat,
+	  location.lon
+      ]}
+      onClose={onClose}
+      >
+      <div>
       <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
       <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
       <FormattedMessage id="Location.age"/>: {Date.now()-location.ts} ms<br/>

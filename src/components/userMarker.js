@@ -35,6 +35,7 @@ const UserMarker=(props)=>{
 	    </Marker>
 	);
     }else{
+	//console.log('no location, no user marker')
 	return null;
     }
 }
