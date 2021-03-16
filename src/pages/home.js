@@ -15,11 +15,42 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-import React from 'react';  
+import React, {useEffect, useState} from 'react';
 import Map from './map';
+//send HTTP GET
+import axios from 'axios';
 
 const Home=()=>
 {
-    return <Map />; 
+    const [vehicles, setVehicles]=useState([]);
+
+    //load vehicles from db
+    useEffect(()=>{
+        // setting interval: similar to ComponentDidMount
+        const timer=setInterval(()=>{
+            axios.get('https://dedriver.org/xpress')
+            .then(response => {
+                if(response.data){
+                    // setting vehicles
+                    setVehicles(response.data);
+                }else{
+		    console.log('GET request without response')
+		}
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+	    //TODO improve availability of interval property
+        },5000);
+        // clearing interval: similar to ComponentWillUnmount
+        return ()=>clearInterval(timer);
+    });
+
+    return (
+	    <Map
+	vehicles={vehicles}
+	    />
+    );
 }
 export default Home;
+

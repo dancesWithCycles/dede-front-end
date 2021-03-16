@@ -22,22 +22,22 @@ import VehiclePopup from './vehiclePopup';
 import {CircleMarker} from 'react-leaflet';
 
 const VehicleRealTimeMarker=(props)=>{
-    const {location,eventHandlers}=props;
+    const {vehicle}=props;
     //TODO improve availability of age property
     const age=60000;
     let sysTs=Date.now();
-    let diff=sysTs-location.ts;
+    let diff=sysTs-vehicle.ts;
     if(diff<age){
 	return(
 		<>
 		<CircleMarker
-	    key={location.uuid}
+	    key={vehicle.uuid}
 	    //disable boarder on circles
 	    stroke={false}
 	    fillColor='#3F00FF'
             fillOpacity={1}
             radius={10}
-            center={[location.lat,location.lon]}/>
+            center={[vehicle.lat,vehicle.lon]}/>
 	    </>
 	);
     }else{

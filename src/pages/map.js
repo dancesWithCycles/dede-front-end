@@ -15,13 +15,16 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 // map is invisible without the following CSS
 import './map.css';
-import  {MapContainer, TileLayer, LayersControl} from 'react-leaflet';
+import  {
+    MapContainer,
+    TileLayer,
+    LayersControl
+} from 'react-leaflet';
 // map is BROKEN without zoom attribute
 import 'leaflet/dist/leaflet.css';
-import 'react-leaflet-markercluster/dist/styles.min.css';
 //send HTTP GET
 import axios from 'axios';
 import VehicleMarker from '../components/vehicleMarker';
@@ -30,52 +33,40 @@ import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import 'react-leaflet-markercluster/dist/styles.min.css';
+import {
+  attribution,
+  tileUrl,
+  defaultMapState,
+} from '../components/utils/mapUtils';
 
 export const INITIAL_LOCATION = [0,0];
 
-const Map=()=>
-{
-    const [locations, setLocations]=useState([]);
+const Map=(props)=>
+      {
+	  const state=defaultMapState;
+	  const {vehicles}=props;
+	  const pos=UserPosition();
 
-    //load vehicles from db
-    useEffect(()=>{
-        // setting interval: similar to ComponentDidMount
-        const timer=setInterval(()=>{
-            axios.get('https://dedriver.org/xpress')
-            .then(response => {
-                if(response.data){
-                    // setting locations
-                    setLocations(response.data);
-                }else{
-		    console.log('GET request without response')
-		}
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-        },5000);
-        // clearing interval: similar to ComponentWillUnmount
-        return ()=>clearInterval(timer);
-    });
+	  const currentUserLocation=()=>{
+              if(pos){
+		  return [pos.coords.latitude,pos.coords.longitude];
+	      }else{
+		  // return initial map location until user location is available
+		  //TODO: Cleanup!
+		  return INITIAL_LOCATION;
+		  //return [state.lat,state.lon];
+              }
+	  };
 
-    const pos=UserPosition();
 
-    const currentUserLocation=()=>{
-        if(pos){
-	    return [pos.coords.latitude,pos.coords.longitude];
-	}else{
-	    // return initial map location until user location is available
-            return INITIAL_LOCATION;
-        }
-    };
-
-    // include locaation only if it has id, lat, lon, ... TODO
-    const filteredLocations = locations.filter(
-	(location) =>
-	location.uuid &&
-	location.lat &&
-	location.lon
-    );
+	  // include location only if it has id, lat, lon, ... TODO: To be continued!
+	  const filteredVehicles = vehicles.filter(
+	      (vehicle) =>
+	      vehicle.uuid &&
+	      vehicle.lat &&
+	      vehicle.lon
+	  );
 
     // Function for creating custom icon for cluster group
     // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
@@ -90,14 +81,14 @@ const Map=()=>
 	});
     };
 
-    return(
+    return vehicles ? (
 
         <MapContainer
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={2}
-	minZoom={2}
+        zoom={state.zoom}
+	minZoom={state.minZoom}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
@@ -117,8 +108,8 @@ const Map=()=>
 
 	    <LayersControl.BaseLayer name="OSM Standard" checked>
             <TileLayer
-        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-        attribution="&copy; <a href=http://osm.org/copyright>OpenStreetMap</a> contributors"
+        url={tileUrl}
+        attribution={attribution}
 	    />
 	    </LayersControl.BaseLayer>
 
@@ -132,8 +123,8 @@ const Map=()=>
 	    <MarkerClusterGroup
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
-            {filteredLocations.map(function(o) {
-                return <VehicleMarker key={o.uuid} location={o}/>;
+            {filteredVehicles.map(function(o) {
+                return <VehicleMarker key={o.uuid} vehicle={o}/>;
                 })
             }
 	</MarkerClusterGroup>
@@ -142,8 +133,10 @@ const Map=()=>
 	position={currentUserLocation()}/>
 
         </MapContainer>
-
-        ); 
+    ):(
+	//TODO: add intl'ization!
+	"Data is loading..."
+    );
 }
 export default Map;
 
