@@ -25,7 +25,6 @@ import 'react-leaflet-markercluster/dist/styles.min.css';
 //send HTTP GET
 import axios from 'axios';
 import VehicleMarker from '../components/vehicleMarker';
-import VehiclePopup from '../components/vehiclePopup';
 import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
@@ -37,7 +36,6 @@ export const INITIAL_LOCATION = [0,0];
 const Map=()=>
 {
     const [locations, setLocations]=useState([]);
-    const [activeVehicle, setActiveVehicle]=useState(null);
 
     //load vehicles from db
     useEffect(()=>{
@@ -67,14 +65,6 @@ const Map=()=>
 	    // return initial map location until user location is available
             return INITIAL_LOCATION;
         }
-    };
-
-    const closePopup=()=>{
-	setActiveVehicle(null)
-    };
-
-    const handleActiveVehicle=(location)=>{
-	setActiveVehicle(location);
     };
 
     // Function for creating custom icon for cluster group
@@ -127,21 +117,13 @@ const Map=()=>
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
             {locations.map(function(o) {
-                return <VehicleMarker
-		key={o.uuid}
-		location={o}
-		eventHandlers={{click: ()=>handleActiveVehicle(o)}}/>;
+                return <VehicleMarker key={o.uuid} location={o}/>;
                 })
             }
 	</MarkerClusterGroup>
 
-            <UserMarker position={currentUserLocation()}/>
-
-	{activeVehicle && (
-		<VehiclePopup
-	    location={activeVehicle}
-	    onClose={()=>closePopup()}/>
-	)}
+            <UserMarker
+	position={currentUserLocation()}/>
 
         </MapContainer>
 

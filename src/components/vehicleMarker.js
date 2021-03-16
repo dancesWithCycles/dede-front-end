@@ -33,7 +33,9 @@ const VehicleRealTimeMarker=(props)=>{
 	    key={location.uuid}
 	    position={[location.lat,location.lon]}
 	    eventHandlers={eventHandlers}
-	    icon={VehicleIcon(location)}/>
+	    icon={VehicleIcon(location)}>
+		<VehiclePopup location={location}/>
+	    </Marker>
 	    </>
 	);
     }else{
