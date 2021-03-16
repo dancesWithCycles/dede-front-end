@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import React from 'react';
 import VehicleIcon from './vehicleIcon';
 import VehiclePopup from './vehiclePopup';
-import {CircleMarker} from 'react-leaflet';
+import {Marker} from 'react-leaflet';
 
 const VehicleRealTimeMarker=(props)=>{
     const {location,eventHandlers}=props;
@@ -29,14 +29,11 @@ const VehicleRealTimeMarker=(props)=>{
     if(diff<age){
 	return(
 		<>
-		<CircleMarker
-	    color='#3F00FF'
-            opacity={1}
-            radius={10}
-            weight={1}
-            center={[location.lat,location.lon]}
+		<Marker
 	    key={location.uuid}
-	    eventHandlers={eventHandlers}/>
+	    position={[location.lat,location.lon]}
+	    eventHandlers={eventHandlers}
+	    icon={VehicleIcon(location)}/>
 	    </>
 	);
     }else{
