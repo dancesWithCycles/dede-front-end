@@ -18,7 +18,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import React from 'react';
 import VehicleIcon from './vehicleIcon';
 import VehiclePopup from './vehiclePopup';
-import {Marker} from 'react-leaflet';
+//CircleMarker is the only marker under the Vector Layer Category in Leaflet
+import {CircleMarker} from 'react-leaflet';
 
 const VehicleRealTimeMarker=(props)=>{
     const {location,eventHandlers}=props;
@@ -29,13 +30,14 @@ const VehicleRealTimeMarker=(props)=>{
     if(diff<age){
 	return(
 		<>
-		<Marker
+		<CircleMarker
 	    key={location.uuid}
-	    position={[location.lat,location.lon]}
-	    eventHandlers={eventHandlers}
-	    icon={VehicleIcon(location)}>
-		<VehiclePopup location={location}/>
-	    </Marker>
+	    //disable boarder on circles
+	    stroke={false}
+	    fillColor='#3F00FF'
+            fillOpacity={1}
+            radius={10}
+            center={[location.lat,location.lon]}/>
 	    </>
 	);
     }else{

@@ -46,7 +46,9 @@ const Map=()=>
                 if(response.data){
                     // setting locations
                     setLocations(response.data);
-                }
+                }else{
+		    console.log('GET request without response')
+		}
             })
             .catch(function (error) {
                 console.log(error);
@@ -66,6 +68,14 @@ const Map=()=>
             return INITIAL_LOCATION;
         }
     };
+
+    // include locaation only if it has id, lat, lon, ... TODO
+    const filteredLocations = locations.filter(
+	(location) =>
+	location.uuid &&
+	location.lat &&
+	location.lon
+    );
 
     // Function for creating custom icon for cluster group
     // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
@@ -92,9 +102,16 @@ const Map=()=>
         zoomControl={true}
         doubleClickZoom={true}
         scrollWheelZoom={true}
+	//drag map with mouse or touch
         dragging={true}
-        animate={true}
-        easeLinearity={0.35}>
+	//reset view completely without animation
+        animate={false}
+	//update view when idle
+	updateWhenIdle={true}
+	//update view when idle
+	updateWhenZooming={false}
+	//render Paths on a Canvas Renderer instead of SVG
+	preferCanvas={true}>
                 
 	    <LayersControl>
 
@@ -115,7 +132,7 @@ const Map=()=>
 	    <MarkerClusterGroup
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
-            {locations.map(function(o) {
+            {filteredLocations.map(function(o) {
                 return <VehicleMarker key={o.uuid} location={o}/>;
                 })
             }
