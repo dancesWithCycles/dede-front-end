@@ -15,19 +15,20 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import React from 'react';
+import React, {useState} from 'react';
 // map is invisible without the following CSS
 import './map.css';
 import  {
     MapContainer,
     TileLayer,
-    LayersControl
+    LayersControl,
+    CircleMarker,
+    Popup
 } from 'react-leaflet';
 // map is BROKEN without zoom attribute
 import 'leaflet/dist/leaflet.css';
 //send HTTP GET
 import axios from 'axios';
-import VehicleMarker from '../components/vehicleMarker';
 import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
@@ -39,11 +40,13 @@ import {
   tileUrl,
   defaultMapState,
 } from '../components/utils/mapUtils';
+import VehicleTooltip from '../components/vehicleTooltip';
 
 export const INITIAL_LOCATION = [0,0];
 
 const Map=(props)=>
       {
+	  const [activeVehicle, setActiveVehicle]=useState(null);
 	  const state=defaultMapState;
 	  const {vehicles}=props;
 	  const pos=UserPosition();
@@ -68,14 +71,21 @@ const Map=(props)=>
 	      vehicle.lon
 	  );
 
-    // Function for creating custom icon for cluster group
+	  const closePopup=()=>{
+	      setActiveVehicle(null)
+	  };
+
+	  const handleActiveVehicle=(vehicle)=>{
+	      setActiveVehicle(vehicle);
+	  };
+
+	  // Function for creating custom icon for cluster group
     // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
     // NOTE: iconCreateFunction is running by leaflet, which is not support ES6 arrow func syntax
     // eslint-disable-next-line
     const createClusterCustomIcon = function (cluster) {
 	return L.divIcon({
 	    html: '<div><span>'+cluster.getChildCount()+'</span></div>',
-	    //html: \`<span>\${cluster.getChildCount()}</span>\`,
 	    className: 'marker-cluster-custom',
 	    iconSize: L.point(40, 40, true),
 	});
@@ -123,11 +133,32 @@ const Map=(props)=>
 	    <MarkerClusterGroup
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
-            {filteredVehicles.map(function(o) {
-                return <VehicleMarker key={o.uuid} vehicle={o}/>;
-                })
-            }
+	{filteredVehicles.map((vehicle,id)=>
+				  <CircleMarker
+				  key={vehicle.uuid}
+				  //disable boarder on circles
+				  stroke={false}
+				  fillColor='#3F00FF'
+				  fillOpacity={1}
+				  radius={9}
+				  eventHandlers={{click: ()=>handleActiveVehicle(vehicle)}}
+				  center={[vehicle.lat,vehicle.lon]}/>
+				 )}
 	</MarkerClusterGroup>
+
+	{activeVehicle && <Popup
+	 key={activeVehicle.uuid}
+	 position={[
+	     activeVehicle.lat,
+	     activeVehicle.lon
+	 ]}
+	 onClose={()=>closePopup()}
+	 >
+	 <VehicleTooltip
+         vehicle={activeVehicle}
+	 />
+	 </Popup>
+	}
 
             <UserMarker
 	position={currentUserLocation()}/>
