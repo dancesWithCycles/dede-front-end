@@ -41,7 +41,7 @@ const Home=()=>
                 console.log(error);
             })
 	    //TODO improve availability of interval property
-        },5000);
+        },3000);
         // clearing interval: similar to ComponentWillUnmount
         return ()=>clearInterval(timer);
     });

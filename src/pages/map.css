@@ -24,6 +24,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     height: 100vh;
 }
 
+.markercluster-map { height: 100vh; }
+
 /* Customize the Clustered Markers */
 .marker-cluster-custom {
   background: #3F00FF;

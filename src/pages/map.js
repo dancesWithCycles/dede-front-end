@@ -131,6 +131,9 @@ const Map=(props)=>
 	</LayersControl>
 
 	    <MarkerClusterGroup
+	animate={false}
+	disableClusteringAtZoom={17}
+	spiderfyOnMaxZoom={false}
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
 	{filteredVehicles.map((vehicle,id)=>
@@ -140,7 +143,7 @@ const Map=(props)=>
 				  stroke={false}
 				  fillColor='#3F00FF'
 				  fillOpacity={1}
-				  radius={9}
+				  radius={13}
 				  eventHandlers={{click: ()=>handleActiveVehicle(vehicle)}}
 				  center={[vehicle.lat,vehicle.lon]}/>
 				 )}
