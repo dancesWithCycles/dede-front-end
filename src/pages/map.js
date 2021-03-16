@@ -88,7 +88,6 @@ const Map=()=>
         // map is invisible without zoom attribute
         zoom={2}
 	minZoom={2}
-	maxZoom={18}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
