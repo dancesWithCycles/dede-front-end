@@ -132,7 +132,7 @@ const Map=(props)=>
 
 	    <MarkerClusterGroup
 	animate={false}
-	disableClusteringAtZoom={17}
+	disableClusteringAtZoom={18}
 	spiderfyOnMaxZoom={false}
 	showCoverageOnHover={false}
 	iconCreateFunction={createClusterCustomIcon}>
