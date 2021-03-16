@@ -21,6 +21,7 @@ import './map.css';
 import  {MapContainer, TileLayer, LayersControl} from 'react-leaflet';
 // map is BROKEN without zoom attribute
 import 'leaflet/dist/leaflet.css';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 //send HTTP GET
 import axios from 'axios';
 import VehicleMarker from '../components/vehicleMarker';
@@ -29,6 +30,7 @@ import UserMarker from '../components/userMarker';
 import UserPosition from '../components/userPosition';
 import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 export const INITIAL_LOCATION = [0,0];
 
@@ -75,13 +77,28 @@ const Map=()=>
 	setActiveVehicle(location);
     };
 
+    // Function for creating custom icon for cluster group
+    // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
+    // NOTE: iconCreateFunction is running by leaflet, which is not support ES6 arrow func syntax
+    // eslint-disable-next-line
+    const createClusterCustomIcon = function (cluster) {
+	return L.divIcon({
+	    html: '<div><span>'+cluster.getChildCount()+'</span></div>',
+	    //html: \`<span>\${cluster.getChildCount()}</span>\`,
+	    className: 'marker-cluster-custom',
+	    iconSize: L.point(40, 40, true),
+	});
+    };
+
     return(
 
         <MapContainer
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={1}
+        zoom={2}
+	minZoom={2}
+	maxZoom={18}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
@@ -105,7 +122,10 @@ const Map=()=>
         })}
 
 	</LayersControl>
-        
+
+	    <MarkerClusterGroup
+	showCoverageOnHover={false}
+	iconCreateFunction={createClusterCustomIcon}>
             {locations.map(function(o) {
                 return <VehicleMarker
 		key={o.uuid}
@@ -113,6 +133,7 @@ const Map=()=>
 		eventHandlers={{click: ()=>handleActiveVehicle(o)}}/>;
                 })
             }
+	</MarkerClusterGroup>
 
             <UserMarker position={currentUserLocation()}/>
 

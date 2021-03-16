@@ -23,3 +23,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     /* vh: viewport-height */
     height: 100vh;
 }
+
+/* Customize the Clustered Markers */
+.marker-cluster-custom {
+  background: #3F00FF;
+  border: 3px solid #ededed;
+  border-radius: 50%;
+  color: #ededed;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
