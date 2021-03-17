@@ -17,23 +17,31 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 /* set height and width of the leaflet container so it fits the viewport */
-.leaflet-container {
+.leaflet-container{
     /* vw: viewport-width */
-    width: 100vw;
+    width:100vw;
     /* vh: viewport-height */
-    height: 100vh;
+    height:95vh;
 }
 
-.markercluster-map { height: 100vh; }
+.markercluster-map{
+    height:95vh;
+}
 
 /* Customize the Clustered Markers */
+/*
+//  width: 40px;
+//  line-height: 37px;
+//  height: 40px;
+//  border: 3px solid #ededed;
+*/
 .marker-cluster-custom {
   background: #3F00FF;
-  border: 3px solid #ededed;
+  border: 0.2rem solid #ededed;
   border-radius: 50%;
   color: #ededed;
-  height: 40px;
-  line-height: 37px;
+  height: 3rem;
+  line-height: 2rem;
   text-align: center;
-  width: 40px;
+  width: 3rem;
 }

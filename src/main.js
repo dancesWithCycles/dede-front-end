@@ -40,7 +40,10 @@ const Main=()=>
     return(
     <IntlProvider locale={language} messages={messages[language]}>
         <Router>
-            <NavBar/>
+            <NavBar
+	className='nav-bar'/>
+	    <div
+	className='main'>
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
@@ -48,6 +51,7 @@ const Main=()=>
                 <Route path="/app" component={App} />
                 <Route component={NoMatch} />
             </Switch>
+	    </div>
         </Router>
     </IntlProvider>
     ); 
