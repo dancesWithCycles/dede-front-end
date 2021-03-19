@@ -24,6 +24,9 @@ import { FormattedMessage } from 'react-intl';
 
 const VehiclePopup = (props) => {
     const { location,onClose } = props;
+    const route=location.routeId?location.routeId:
+	  <FormattedMessage id="Location.unknown"/>;
+    const age=((Date.now()-location.ts)/1000).toFixed(0)
   return  (
     <Popup
       key={location.uuid}
@@ -34,9 +37,10 @@ const VehiclePopup = (props) => {
       onClose={onClose}
       >
       <div>
-      <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
-      <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
-      <FormattedMessage id="Location.age"/>: {Date.now()-location.ts} ms<br/>
+	  <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
+	  <FormattedMessage id="Location.route"/>: {route}<br/>
+	  <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
+	  <FormattedMessage id="Location.age"/>: {age} s<br/>
       </div>
     </Popup>
     );

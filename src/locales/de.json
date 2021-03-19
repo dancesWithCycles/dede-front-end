@@ -6,7 +6,7 @@
   "Contact.heading.about":"Ueber diese Webseite",
   "Contact.text.about":"Bitte richten sie Fragen zu dieser Webseite an ",
   "Contact.heading.impressung":"Impressum",
-  "Nomatch.text":"Seite unbekannt!",
+  "Nomatch.text":"Seite Unbekannt!",
   "Aapp.text":"Die aktuelle Version der Dede App für Smartphones mit Android Betriebsystem kann über den folgenden Link heruntergeladen werden. Nutzer von Smartphones anderer Betriebssysteme müssen sich bitte noch bisschen gedulen.",
   "Aapp.link":"App herunterladen",
   "About.service.intro":"Das ist die Webseite von Dede. Dede ist ein Fahrgastinformationssystem (FIS), das die Bewegung von beliebigen Mobilitätsdienstleistern in Echtzeit auf einer Karte universell darstellt. Mit Dede können Fahrgäste die Erreichbarkeit und Verfügbarkeit von beliebigen Fahrzeugen wie Bahn, Bus, Car-Sharing, Fahrdienst, Straßenbahn, Tram, Taxi, usw. beurteilen. Fahrgäste, welche Dede lieber in einer App suchen statt auf einer Webseite, müssen sich bitte noch ein bisschen gedulden.",
@@ -42,14 +42,16 @@
   "Concept.component.server":"ein Server als Vermittler und",
   "Concept.component.map":"eine Karte zur Ansicht von Echtzeitbewegung von Mobilitätsdienstleistern.",
   "Concept.description":"Der Dede Server vermittelt zwischen App und Karte, damit nicht jedes Verkehrsmittel direkt mit jeder App interagieren muss. Auf diese Weise kann die Karte mit einem Streich sämtliche Verkehrsmittel am Server abfragen. Der Dede Server speichert ausschließlich die aktuellste Position eines Verkehrsmittels. Falls ein Mobilitätsdienstleister das Senden der Position beendet, löscht der Dede Server das entsprechende Verkehrsmittel nach einer Minute. Falls kein einziger Mobilitätsdienstleister die Dede App aktiv benutzt, ist die Dede Karte spätestens nach einer Minute komplett leer.",
-  "Location.alias":"Alias",
+    "Location.alias":"Alias",
+    "Location.unknown":"Unbekannt",
+    "Location.route":"Linie",
   "Location.alias.user":"Benutzerposition",
-  "Location.vehicle":"Verkehrsmittel",
+  "Location.vehicle":"Fahrzeug",
   "Location.latitude":"Breitengrad",
   "Location.longitude":"Längengrad",
   "Location.time.gps":"GPS-Zeit",
   "Location.time.system":"Systemzeit",
-  "Location.age":"Alter",
+  "Location.age":"Datenalter",
   "Vehicle.bus":"Bus",
   "Vehicle.car":"Auto",
   "Vehicle.train":"Zug",
@@ -59,4 +61,4 @@
   "Vehicle.deliveryservice":"Lieferservice",
   "Vehicle.nomatch":"Unbekannt"
 }
-  
+
