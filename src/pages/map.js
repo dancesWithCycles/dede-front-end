@@ -41,7 +41,9 @@ const Map=()=>
     useEffect(()=>{
         // setting interval: similar to ComponentDidMount
         const timer=setInterval(()=>{
-            axios.get('https://dedriver.org/xpress')
+            axios.get(
+		'https://dedriver.org/xpress'
+	    )
             .then(response => {
                 if(response.data){
                     // setting locations
