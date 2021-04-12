@@ -19,7 +19,6 @@ import React, {useEffect, useState} from 'react';
 // map is invisible without the following CSS
 import './map.css';
 import  {MapContainer, TileLayer, LayersControl} from 'react-leaflet';
-// map is BROKEN without zoom attribute
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 //send HTTP GET
@@ -31,7 +30,7 @@ import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
-export const INITIAL_LOCATION = [0,0];
+export const INITIAL_LOCATION = [39.208111,-76.829075];
 
 const Map=()=>
 {
@@ -86,7 +85,7 @@ const Map=()=>
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={2}
+        zoom={11}
 	minZoom={2}
         attributionControl={true}
         zoomControl={true}
