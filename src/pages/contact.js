@@ -22,10 +22,22 @@ import { FormattedMessage } from 'react-intl';
 const Contact=()=>
 {
     return(
-        <p>
-        <FormattedMessage id="Contact.email"/>
-        : sbegerad@posteo.de
-    </p>
-); 
+	    <div>
+
+	    <h2><FormattedMessage id="Contact.heading.about"/></h2>
+
+	    <p><FormattedMessage id="Contact.text.about"/> <a href="mailto:dialog@begerad.de">Stefan Begerad</a>.</p>
+
+	    <h2><FormattedMessage id="Contact.heading.impressung"/></h2>
+
+	    <address>
+	    <strong>Stefan Begerad</strong><br />
+	9259 Hobnail Court<br />
+	Columbia, Maryland 21045<br />
+	USA<br />
+	</address>
+
+	</div>
+    );
 }
 export default Contact;
