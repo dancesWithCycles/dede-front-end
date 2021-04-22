@@ -28,6 +28,8 @@ const Contact=()=>
 
 	    <p><FormattedMessage id="Contact.text.about"/> <a href="mailto:dialog@begerad.de">Stefan Begerad</a>.</p>
 
+	    <p><FormattedMessage id="Contact.text.github"/> <a href="https://github.com/dancesWithCycles/dede-front-end" target="_blank">GitHub</a>.</p>
+
 	    <h2><FormattedMessage id="Contact.heading.impressung"/></h2>
 
 	    <address>
