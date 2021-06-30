@@ -30,7 +30,10 @@ import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
-export const INITIAL_LOCATION = [39.208111,-76.829075];
+//lat and lon of Demmin, German
+export const INITIAL_LOCATION = [53.917546,13.06358];
+//lat and lon of Columbia, MD, USA
+//export const INITIAL_LOCATION = [39.208111,-76.829075];
 
 const Map=()=>
 {
@@ -87,7 +90,7 @@ const Map=()=>
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={11}
+        zoom={3}
 	minZoom={2}
         attributionControl={true}
         zoomControl={true}
