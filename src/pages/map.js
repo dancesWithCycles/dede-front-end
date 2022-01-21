@@ -44,7 +44,7 @@ const Map=()=>
         // setting interval: similar to ComponentDidMount
         const timer=setInterval(()=>{
             axios.get(
-		'https://dedriver.org/xpress'
+		'http://83.223.94.182:42001/'
 	    )
             .then(response => {
                 if(response.data){
