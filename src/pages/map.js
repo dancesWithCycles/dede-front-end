@@ -44,7 +44,7 @@ const Map=()=>
         // setting interval: similar to ComponentDidMount
         const timer=setInterval(()=>{
             axios.get(
-		'http://83.223.94.182:42001/'
+		'http://192.168.22.16:42001/'
 	    )
             .then(response => {
                 if(response.data){
