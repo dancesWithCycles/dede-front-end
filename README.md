@@ -1,24 +1,45 @@
-# dede-front-end
-website front end for the Dede passenger information system
+# Dede-realtime-map
 
-## Overview
-This repository provides the website front end for the Dede passenger information system at https://dedriver.org.
+realtime map (RTM) service for the Designated Driver (Dede) free software community
+[project](https://dedriver.org)
 
-## Setup for development environment
-Run the following command in your favorite GNU/Linux shell to install dependenies.
+## Table of Contents
+0. [General](#General)
+1. [Quick Start Guide](#Quick-Start-Guide)
+2. [Setup](doc/setup.md)
+
+# General
+
+This repository provides a service for Linux based operating system.
+As a front end service,
+this service interacts with the
+[Dede server](https://github.com/Dede-Designated-Driver/dede-server).
+
+# Quick Start Guide
+
+## Preparation
+
+* check out project on a GNU/Linux development system and change into the project root folder
+```
+git clone git@github.com:Dede-Designated-Driver/dede-front-end.git
+```
+
+* run the following instruction to install dependenies.
 ```
 npm i
 ```
-Run the following command in your favorite GNU/Linux shell to start the service in development mode.
+
+## Development setup
+
+* run the following instruction to start the service in development mode.
 ```
-npm start
+npm run start
+
 ```
-## Setup for production deployment
-Run the following command in your favorite GNU/Linux shell to install dependenies.
-```
-npm i
-```
-Run the following command in your favorite GNU/Linux shell to build the website for production deployment.
+
+## Production deployment
+
+* run the following instrction to build the service for the production host.
 ```
 npm run build
 ```
