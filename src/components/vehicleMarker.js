@@ -26,12 +26,6 @@ const VehicleRealTimeMarker=(props)=>{
     const age=600000;
     let sysTs=Date.now();
     let diff=sysTs-location.ts;
-    console.log('VehRTMarker: location.ts: '
-		+location.ts
-		+', sysTs: '
-		+sysTs
-		+', diff: '
-		+diff);
     //vehicles with movement data age bigger than shall not be presented
     if(diff<age){
 	return(
