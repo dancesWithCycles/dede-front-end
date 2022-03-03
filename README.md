@@ -1,4 +1,4 @@
-# Dede-realtime-map
+# Dede-map
 
 realtime map (RTM) service for the Designated Driver (Dede) free software community
 [project](https://dedriver.org)
@@ -10,9 +10,11 @@ realtime map (RTM) service for the Designated Driver (Dede) free software commun
 
 # General
 
-This repository provides a service for Linux based operating system.
+This repository provides a service for
+[GNU/Linux](https://www.gnu.org/gnu/linux-and-gnu.en.html)
+operating system.
 As a front end service,
-this service interacts with the
+it interacts with the
 [Dede server](https://github.com/Dede-Designated-Driver/dede-server).
 
 # Quick Start Guide
@@ -24,14 +26,14 @@ this service interacts with the
 git clone git@github.com:Dede-Designated-Driver/dede-front-end.git
 ```
 
-* run the following instruction to install dependenies.
+* run the following instruction to install dependenies
 ```
 npm i
 ```
 
 ## Development setup
 
-* run the following instruction to start the service in development mode.
+* run the following instruction to start the service in development mode
 ```
 npm run start
 
@@ -39,7 +41,7 @@ npm run start
 
 ## Production deployment
 
-* run the following instrction to build the service for the production host.
+* run the following instruction to build the service for a production host
 ```
 npm run build
 ```

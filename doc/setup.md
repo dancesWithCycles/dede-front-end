@@ -1,4 +1,6 @@
-# Dede-realtime-map Setup
+# Dede-map Setup
+
+## Preparation
 
 Use the following checklist to setup this service on
 [Debian Bullseye](https://www.debian.org/releases/bullseye/)
@@ -8,28 +10,23 @@ Use the following checklist to setup this service on
 
 * enter project root folder to create archive of static web site and copy onto host system
 ```
-cd dede-front-end
+cd dede-display
 tar -czvf dist.tar.gz dist
-scp dede-server.tar.gz  <user>@<host>.<domain>:/home/<user>/
+scp -p <ssh port> dist.tar.gz  <user>@<host>.<domain>:/home/<user>/
 ```
 
 * set up service environment on host system
 ```
-sudo mkdir -p /var/www/dede-rtm
-sudo tar -xzvf ~/dist.tar.gz -C /var/www/dede-rtm/
-sudo mv /var/www/dede-rtm/dist/ /var/www/dede-rtm/public_html
+sudo mkdir -p /var/www/dede-map
+sudo tar -xzvf ~/dist.tar.gz -C /var/www/dede-map/
+sudo mv /var/www/dede-map/dist/ /var/www/dede-map/public_html
 ```
 
-* update host
-```
-sudo apt-get update
-sudo apt-get upgrade
-```
+## Apache Installation
 
-* install apache
-```
-sudo apt-get install apache2 --no-install-recommends
-```
+* install Apache like [this](https://github.com/Software-Ingenieur-Begerad/setup/blob/main/doc/apache.md)
+
+## Apache Proxy Setup
 
 * enable apache proxy modules
 ```
@@ -62,4 +59,4 @@ sudo systemctl reload apache2
 systemctl status apache2
 ```
 
-* add apache virtual hoste port to the firewall (e.g. nftables or ufw)
+* add apache virtual host port to the firewall (e.g. nftables or ufw)
