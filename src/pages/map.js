@@ -30,8 +30,10 @@ import {ThunderForests} from '../components/thunderForests';
 import TBaseLayer from '../components/tBaseLayer';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
+//lat and lon of Bremen, German
+export const INITIAL_LOCATION = [53.07582,8.80717];
 //lat and lon of Demmin, German
-export const INITIAL_LOCATION = [53.917546,13.06358];
+//export const INITIAL_LOCATION = [53.917546,13.06358];
 //lat and lon of Columbia, MD, USA
 //export const INITIAL_LOCATION = [39.208111,-76.829075];
 
@@ -40,11 +42,22 @@ const Map=()=>
     /*store lcts as array and initialise empty object*/
     const [locations, setLocations]=useState([]);
 
+
     /*fetch lcts*/
     const getLcts=()=>{
 	axios.get('<proto>:<address>:<port>')
 	    .then(response => {
 		if(response.data){
+
+    //load vehicles from db
+    useEffect(()=>{
+        // setting interval: similar to ComponentDidMount
+        const timer=setInterval(()=>{
+            axios.get(
+		'https://dede-map.vbn.de:42001/'
+	    )
+            .then(response => {
+                if(response.data){
                     // setting locations
                     setLocations(response.data);
                 }
@@ -99,8 +112,9 @@ const Map=()=>
         // map is invisible without center attribute
         center={currentUserLocation()}
         // map is invisible without zoom attribute
-        zoom={3}
-	minZoom={2}
+        zoom={8}
+	    minZoom={2}
+	    maxZoom={18}
         attributionControl={true}
         zoomControl={true}
         doubleClickZoom={true}
