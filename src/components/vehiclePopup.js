@@ -26,7 +26,11 @@ const VehiclePopup = (props) => {
     const { location,onClose } = props;
     const route=location.routeId?location.routeId:
 	  <FormattedMessage id="Location.unknown"/>;
+    const trip=location.tripId?location.tripId:
+	  <FormattedMessage id="Location.unknown"/>;
     const company=location.company?location.company:
+	  <FormattedMessage id="Location.unknown"/>;
+    const driver=location.label?location.label:
 	  <FormattedMessage id="Location.unknown"/>;
     const age=((Date.now()-location.ts)/1000).toFixed(0)
   return  (
@@ -42,6 +46,8 @@ const VehiclePopup = (props) => {
 	  <FormattedMessage id="Location.alias"/>: {VehicleAlias(location.alias)}<br/>
 	  <FormattedMessage id="Location.company"/>: {company}<br/>
 	  <FormattedMessage id="Location.route"/>: {route}<br/>
+	  Trip: {trip}<br/>
+	  Driver: {driver}<br/>
 	  <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
 	  <FormattedMessage id="Location.age"/>: {age} s<br/>
       </div>
