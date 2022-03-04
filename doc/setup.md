@@ -45,9 +45,9 @@ sudo touch /etc/apache2/sites-available/dede-rtm.conf
 
 * adjust folder permissions
 ```
-sudo chown -R begerad /var/www/dede-rtm
+sudo chown -R www-data /var/www/dede-rtm
 sudo chgrp -R www-data /var/www/dede-rtm
-sudo chmod -R 750 /var/www/dede-rtm
+sudo chmod -R 755 /var/www/dede-rtm
 sudo chmod g+s /var/www/dede-rtm
 ```
 
