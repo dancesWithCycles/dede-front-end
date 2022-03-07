@@ -37,28 +37,37 @@ export const INITIAL_LOCATION = [53.917546,13.06358];
 
 const Map=()=>
 {
+    /*store lcts as array and initialise empty object*/
     const [locations, setLocations]=useState([]);
 
-    //load vehicles from db
-    useEffect(()=>{
-        // setting interval: similar to ComponentDidMount
-        const timer=setInterval(()=>{
-            axios.get(
-		'http://<ip>:<port>/'
-	    )
-            .then(response => {
-                if(response.data){
+    /*fetch lcts*/
+    const getLcts=()=>{
+	axios.get('<proto>:<address>:<port>')
+	    .then(response => {
+		if(response.data){
                     // setting locations
                     setLocations(response.data);
                 }
             })
             .catch(function (error) {
-                console.log(error);
-            })
-        },5000);
-        // clearing interval: similar to ComponentWillUnmount
-        return ()=>clearInterval(timer);
-    });
+                console.log('error.message: '+error.message);
+            });
+    };
+
+    //load vehicles from db
+    useEffect(()=>{
+        // setting interval: similar to ComponentDidMount
+
+	getLcts();
+
+	/*refresh lcts periodically*/
+        const interval=setInterval(()=>{
+	    getLcts();
+        },10000);
+
+	/*clearing interval: similar to ComponentWillUnmount*/
+        return ()=>clearInterval(interval);
+    }, []);
 
     const pos=UserPosition();
 
