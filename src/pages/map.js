@@ -48,16 +48,6 @@ const Map=()=>
 	axios.get('<proto>:<address>:<port>')
 	    .then(response => {
 		if(response.data){
-
-    //load vehicles from db
-    useEffect(()=>{
-        // setting interval: similar to ComponentDidMount
-        const timer=setInterval(()=>{
-            axios.get(
-		'https://dede-map.vbn.de:42001/'
-	    )
-            .then(response => {
-                if(response.data){
                     // setting locations
                     setLocations(response.data);
                 }
