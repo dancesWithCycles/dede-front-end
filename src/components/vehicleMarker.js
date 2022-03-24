@@ -23,7 +23,7 @@ import {Marker} from 'react-leaflet';
 const VehicleRealTimeMarker=(props)=>{
     const {location,eventHandlers}=props;
     //TODO improve availability of age property
-    const age=600000;
+    const age=3600000;
     let sysTs=Date.now();
     let diff=sysTs-location.ts;
     //vehicles with movement data age bigger than shall not be presented
