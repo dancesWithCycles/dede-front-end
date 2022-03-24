@@ -45,7 +45,7 @@ const Map=()=>
 
     /*fetch lcts*/
     const getLcts=()=>{
-	axios.get('<proto>:<address>:<port>')
+	axios.get('https://dede-map.vbn.de:42001')
 	    .then(response => {
 		if(response.data){
                     // setting locations
