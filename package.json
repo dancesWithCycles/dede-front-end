@@ -1,15 +1,30 @@
 {
+  "private": true,
   "name": "dede-front-end",
-  "version": "0.0.1",
-  "description": "front end for Dede passenger information system",
+  "description": "front end for Designated Driver initiative",
+  "version": "0.0.2",
   "main": "index.js",
+    "keywords": [
+        "public",
+        "transport",
+        "mobility",
+        "dede",
+        "designated driver",
+        "display"
+    ],
+    "author": "Software Ingenieur Begerad <dialog@SwIngBe.de>",
+    "homepage": "https://github.com/Dede-Designated-Driver/dede-front-end/tree/main",
+    "repository": "/Dede-Designated-Driver/dede-front-end",
+    "bugs": "https://github.com/Dede-Designated-Driver/dede-front-end/issues",
+    "license": "GPL-3.0-or-later",
+    "engines": {
+        "node": ">=10"
+    },
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Stefan Begerad",
-  "license": "GPL-3.0",
   "dependencies": {
     "@babel/core": "*",
     "@babel/preset-env": "*",
