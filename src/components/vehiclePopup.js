@@ -31,7 +31,7 @@ const VehiclePopup = (props) => {
 	  <FormattedMessage id="Location.unknown"/>;
     const company=location.company?location.company:
 	  <FormattedMessage id="Location.unknown"/>;
-    const driver=location.label?location.label:
+    const label=location.label?location.label:
 	  <FormattedMessage id="Location.unknown"/>;
     const age=((Date.now()-location.ts)/1000).toFixed(0)
     const sec2dhms=seconds2dmhs(Math.round(age))
@@ -49,7 +49,7 @@ const VehiclePopup = (props) => {
 	  <FormattedMessage id="Location.company"/>: {company}<br/>
 	  <FormattedMessage id="Location.route"/>: {route}<br/>
 	  Trip: {trip}<br/>
-	  Driver: {driver}<br/>
+	  Label: {label}<br/>
 	  <FormattedMessage id="Location.vehicle"/>: {VehicleName(location.vehicle)}<br/>
 	  <FormattedMessage id="Location.age"/>: {sec2dhms}<br/>
       </div>
