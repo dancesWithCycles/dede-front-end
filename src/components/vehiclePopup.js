@@ -19,13 +19,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import React from 'react';
 import {Popup} from 'react-leaflet';
 import VehicleName from './vehicleName';
+import VehicleRoute from './vehicleRoute';
 import VehicleAlias from './vehicleAlias';
 import { FormattedMessage } from 'react-intl';
 import seconds2dmhs from './seconds2dhms';
 
 const VehiclePopup = (props) => {
     const { location,onClose } = props;
+    const VR=VehicleRoute(location.tripId);
+    console.log('VR: '+VR);
     const route=location.routeId?location.routeId:
+	  VR!==location.tripId?VR:
 	  <FormattedMessage id="Location.unknown"/>;
     const trip=location.tripId?location.tripId:
 	  <FormattedMessage id="Location.unknown"/>;
