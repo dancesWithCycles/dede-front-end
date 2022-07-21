@@ -1,0 +1,22 @@
+{
+    "extends": [
+	"config:base"
+    ],
+    "timezone": "Europe/Berlin",
+    "schedule": [
+	"after 4pm every weekday",
+	"before 8am every weekday",
+	"every weekend"
+    ],
+    "packageRules": [
+	{
+	    "matchDepTypes": ["devDependencies"],
+	    "automerge": true
+	},
+	{
+	    "matchUpdateTypes": ["minor","patch"],
+	    "matchCurrentVersion": "!/^0/",
+	    "automerge": true
+	}
+    ]
+}
